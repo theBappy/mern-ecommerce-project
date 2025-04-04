@@ -6,7 +6,7 @@ import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
@@ -51,13 +51,17 @@ const Collection = () => {
       productsCopy.sort((a, b) => b.price - a.price);
     }
 
+    if(showSearch && search){
+      productsCopy = productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
     setFilterProducts(productsCopy);
   };
 
   // Run filter whenever products, category, subCategory or sortOrder changes
   useEffect(() => {
     applyFilter();
-  }, [products, category, subCategory, sortOrder]);
+  }, [products, category, subCategory, sortOrder, showSearch, search]);
 
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
