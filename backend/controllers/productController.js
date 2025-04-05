@@ -32,7 +32,7 @@ const addProduct = async(req,res)=>{
         image: imagesUrl,
         date: Date.now()
     }
-    console.log(productData)
+    
 
     const product = new productModel(productData)
     
@@ -49,17 +49,37 @@ const addProduct = async(req,res)=>{
 
 // list products
 const listProduct = async(req,res)=>{
-
+   try{
+    const products = await productModel.find({})
+    res.json({success: true, products})
+   }catch(error){
+    console.log(error)
+    res.json({success:false, message:error.message})
+   }
 }
 
 // remove or delete a  product
 const removeProduct = async(req,res)=>{
-
+  try{
+    await productModel.findByIdAndDelete(req.body.id)
+    res.json({success:true, message: 'Product deleted successfully'})
+  }catch(error){
+    console.log(error)
+    res.json({success:false, message:error.message})
+  }
 }
 
 // single product info
 const singleProduct = async(req,res)=>{
-
+    try{
+    const { productId } = req.body;
+    const product = await productModel.findById(productId)
+    res.json({success:true,product})
+    }catch(error){
+      console.log(error)
+      res.json({success:false, message:error.message})
+    }
+    
 }
 
 
