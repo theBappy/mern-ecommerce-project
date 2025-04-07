@@ -11,7 +11,7 @@ const BestSeller = () => {
 
   useEffect(() => {
     if (Array.isArray(products)) {
-      setBestSeller(products.slice(0, 10)); 
+      setBestSeller(products.slice(0, 20)); 
     } else {
       console.error("Products is not an array:", products); 
     }

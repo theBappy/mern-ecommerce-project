@@ -66,6 +66,7 @@ const PlaceOrder = () => {
           const response = await axios.post(`http://localhost:4000/api/order/cod`, orderData, {headers: {token}})
           if(response.data.success){
             toast.success('Order placed successfully')
+            localStorage.removeItem('cartItems')
             setCartItems({})
             navigate('/orders')
           }else {

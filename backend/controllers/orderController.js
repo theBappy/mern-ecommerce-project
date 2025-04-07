@@ -103,7 +103,7 @@ const verify_stripe = async(req,res) =>{
     try{
         if(success === 'true'){
             await orderModel.findByIdAndUpdate(orderId, {payment: true})
-            await userModel.findByIdAndUpdate(userId,{cardData: {}})
+            await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
             res.json({success:true})
         }else {
