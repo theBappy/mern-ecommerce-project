@@ -116,14 +116,7 @@ const verify_stripe = async(req,res) =>{
     }
 }
 
-// placing order using bKash payment method(cod)
-const placeOrderBkash = async(req,res)=>{
 
-}
-// placing order using razorpay payment method(cod)
-const placeOrderRazorpay = async(req,res)=>{
-
-}
 
 // all orders data for admin panel
 const  allOrders = async(req,res) => {
@@ -161,4 +154,4 @@ const  updateStatus = async(req,res) => {
    }
 }
 
-export {placeOrderCOD, placeOrderStripe, placeOrderRazorpay,placeOrderBkash, allOrders, userOrders, updateStatus, verify_stripe}
+export {placeOrderCOD, placeOrderStripe, allOrders, userOrders, updateStatus, verify_stripe}
