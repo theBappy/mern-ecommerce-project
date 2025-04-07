@@ -5,14 +5,21 @@ import ProductItem from "./ProductItem";
 
 const BestSeller = () => {
   const { products } = useContext(ShopContext);
+  
   const [bestSeller, setBestSeller] = useState([]);
 
-  console.log("Products from context:", products);
 
   useEffect(() => {
-    const bestProduct = products.filter((item) => item.bestseller);
-    setBestSeller(bestProduct.slice(0,5));
-  }, [products]); 
+    if (Array.isArray(products)) {
+      setBestSeller(products.slice(0, 10)); 
+    } else {
+      console.error("Products is not an array:", products); 
+    }
+  }, [products]);
+  
+  
+
+
 
   return (
     <div className="my-10">

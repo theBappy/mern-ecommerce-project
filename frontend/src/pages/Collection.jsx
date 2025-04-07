@@ -56,9 +56,10 @@ const Collection = () => {
     }
 
     setFilterProducts(productsCopy);
+    
   };
 
-  // Run filter whenever products, category, subCategory or sortOrder changes
+  
   useEffect(() => {
     applyFilter();
   }, [products, category, subCategory, sortOrder, showSearch, search]);

@@ -8,8 +8,12 @@ const LatestCollection = () => {
   const [latestProducts, setLatestProducts] = useState([]);
 
   useEffect(() => {
-    setLatestProducts(products.slice(0, 10));
-  }, []);
+      if (Array.isArray(products)) {
+        setLatestProducts(products.slice(0, 10)); 
+      } else {
+        console.error("Products is not an array:", products); 
+      }
+    }, [products]);
 
   return (
     <div className="my-10">
